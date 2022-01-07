@@ -10,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace CyclistClub.WPF
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for FrmReservation.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class FrmReservation : Window
     {
-        public MainWindow()
+        public FrmReservation()
         {
             InitializeComponent();
-        }
-
-        private void BtnConnect_Click(object sender, RoutedEventArgs e)
-        {
-            FrmAddMembre frmAdd = new FrmAddMembre();
-            frmAdd.Show();
         }
     }
 }

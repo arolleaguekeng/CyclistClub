@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>d532715b-4598-4596-a306-ec0728a992b8</ProjectGuid>
+    <ProjectGuid>{D532715B-4598-4596-A306-EC0728A992B8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CyclistClub.DAL</RootNamespace>
@@ -31,24 +31,65 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BaseRepository.cs" />
+    <Compile Include="CotisationRepository.cs" />
+    <Compile Include="DbConnector.cs" />
+    <Compile Include="MembreRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReservationRepository.cs" />
+    <Compile Include="Sql.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CyclistClub.DB\main.sql" />
+    <Content Include="CyclistClub.DB\objects\main.sql" />
+    <Content Include="CyclistClub.DB\objects\sequences\main.sql" />
+    <Content Include="CyclistClub.DB\objects\sequences\users_sequence.sql" />
+    <Content Include="CyclistClub.DB\objects\tables\balade.sql" />
+    <Content Include="CyclistClub.DB\objects\tables\categorie.sql" />
+    <Content Include="CyclistClub.DB\objects\tables\constraints\constrains.unique.sql" />
+    <Content Include="CyclistClub.DB\objects\tables\constraints\constraints.check.sql" />
+    <Content Include="CyclistClub.DB\objects\tables\constraints\fk\main.sql" />
+    <Content Include="CyclistClub.DB\objects\tables\constraints\main.sql" />
+    <Content Include="CyclistClub.DB\objects\tables\cotisation.sql" />
+    <Content Include="CyclistClub.DB\objects\tables\covoiturage.sql" />
+    <Content Include="CyclistClub.DB\objects\tables\cyclo.sql" />
+    <Content Include="CyclistClub.DB\objects\tables\descendeurs.sql" />
+    <Content Include="CyclistClub.DB\objects\tables\inscription.sql" />
+    <Content Include="CyclistClub.DB\objects\tables\membre.sql" />
+    <Content Include="CyclistClub.DB\objects\tables\randonneurs.sql" />
+    <Content Include="CyclistClub.DB\objects\tables\trialistes.sql" />
+    <Content Include="CyclistClub.DB\objects\tables\Vit.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CyclistClub.DB\.vs\CV_manager4\v16\.suo" />
+    <None Include="CyclistClub.DB\.vs\CV_manager\config\applicationhost.config" />
+    <None Include="CyclistClub.DB\.vs\organisation_structurelle_d-une_institut_academique\v16\.suo" />
+    <None Include="CyclistClub.DB\.vs\ProjectSettings.json" />
+    <None Include="CyclistClub.DB\.vs\slnx.sqlite" />
+    <None Include="CyclistClub.DB\.vs\tirage5\v17\.suo" />
+    <None Include="CyclistClub.DB\.vs\VSWorkspaceState.json" />
+    <None Include="CyclistClub.DB\setup.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CyclistClub.DB\.vs\CV_manager\v16\" />
+    <Folder Include="CyclistClub.DB\features\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CyclistClub.BO\CyclistClub.BO.csproj">
+      <Project>{F5272B1A-B429-4FE5-AF5A-0E60A826E39C}</Project>
+      <Name>CyclistClub.BO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>

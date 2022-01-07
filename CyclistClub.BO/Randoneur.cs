@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CyclistClub.BO
 {
-    public class Class1
+    public class Randoneur
     {
     }
 }

@@ -55,6 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="FrmAddMembre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmReservation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +70,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FrmAddMembre.xaml.cs">
+      <DependentUpon>FrmAddMembre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReservation.xaml.cs">
+      <DependentUpon>FrmReservation.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -93,6 +107,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CyclistClub.BLL\CyclistClub.BLL.csproj">
+      <Project>{3CFB76C6-82F2-4DC0-B4AB-F3DA120C9A92}</Project>
+      <Name>CyclistClub.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CyclistClub.BO\CyclistClub.BO.csproj">
+      <Project>{F5272B1A-B429-4FE5-AF5A-0E60A826E39C}</Project>
+      <Name>CyclistClub.BO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
