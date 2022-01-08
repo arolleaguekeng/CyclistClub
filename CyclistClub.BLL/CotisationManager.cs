@@ -11,14 +11,19 @@ namespace CyclistClub.BLL
     public class CotisationManager
     {
         CotisationRepository repository;
-        public void AddCotisation(List<string> prop, List<string> value)
+        public CotisationManager()
         {
             repository = new CotisationRepository();
-            //repository.Add(prop,value);
         }
-        public void EditUser()
+        
+        public void AddCotisation(Membres membres)
         {
-            //repository.Set(membres);
+
+            repository.Add(membres);
+        }
+        public void AfficherCotisations()
+        {
+            repository.GetAll("cotisations");
         }
     }
 }

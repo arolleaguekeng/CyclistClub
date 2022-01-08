@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -116,6 +117,10 @@
     <ProjectReference Include="..\CyclistClub.BO\CyclistClub.BO.csproj">
       <Project>{F5272B1A-B429-4FE5-AF5A-0E60A826E39C}</Project>
       <Name>CyclistClub.BO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CyclistClub.DAL\CyclistClub.DAL.csproj">
+      <Project>{D532715B-4598-4596-A306-EC0728A992B8}</Project>
+      <Name>CyclistClub.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

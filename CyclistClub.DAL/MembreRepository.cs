@@ -1,7 +1,7 @@
-﻿using Connexion.DAL;
-using CyclistClub.BO;
+﻿using CyclistClub.BO;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -11,33 +11,38 @@ namespace CyclistClub.DAL
 {
     public class MembreRepository : BaseRepository<Membres>
     {
-        private readonly Sql sql;
-        public void Add(Membres membres)
+        private string querry;
+
+        public MembreRepository()
         {
-            sql.Execute
-            (
-                "Sp_Person_Insert",
-                new Sql.Parameter[]
-                {
-                    new Sql.Parameter("@name", System.Data.DbType.String, membres.FullName),
-                    new Sql.Parameter("@phone", System.Data.DbType.Int64, membres.PhoneNumber),
-                    new Sql.Parameter("@birth_day", System.Data.DbType.String, membres.Password),
-                    new Sql.Parameter("@picture", System.Data.DbType.String, membres.Picture)
-                },
-                true
-            );
         }
 
+        public void Add(Membres membres)
+        {
+ 
+                string query = "INSERT INTO membres(name, phone, password,picture)  VALUES(@name, @phone, @password,@picture)";
+                using (SqlCommand command = new SqlCommand(query))
+                {
+                    DbConnector.Open();
+                    command.Parameters.AddWithValue("@id", membres.Id);
+                    command.Parameters.AddWithValue("@name", membres.FullName);
+                    command.Parameters.AddWithValue("@phone", membres.PhoneNumber);
+                    command.Parameters.AddWithValue("@password", membres.Password);
+                    command.Parameters.AddWithValue("@picture", membres.Picture);
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("save done!");
+                }
 
+        }
 
-
-        public bool Selection(string Table, string login, string password, SqlConnection connection)
+        public bool Selection(string Table, string login, string password)
         {
             try
             {
+                DbConnector.Open();
                 string queryString = "SELECT * FROM  " + Table + " WHERE login=" + "'" + login + "'" + " AND passwd=" + "'" + password + "';";
                 Console.WriteLine("=== QueryString === " + queryString);
-                SqlCommand cmd = new SqlCommand(queryString, connection);
+                SqlCommand cmd = new SqlCommand(queryString);
                 var resultQuery = cmd.ExecuteReader();
                 bool res = resultQuery.Read();
                 Console.WriteLine("=== QueryString === " + res);
@@ -53,9 +58,8 @@ namespace CyclistClub.DAL
         {
             try
             {
-                var connector = new DbConnector();
-                connector.connection.Open();
-                var Cmd = Selection(Table, login, password, connector.connection);
+                DbConnector.Open();
+                var Cmd = Selection(Table, login, password);
                 return Cmd;
             }
             catch (SqlException e)
@@ -65,5 +69,6 @@ namespace CyclistClub.DAL
                 return false;
             }
         }
+
     }
 }

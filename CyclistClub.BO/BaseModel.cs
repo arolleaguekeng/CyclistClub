@@ -10,8 +10,8 @@ namespace CyclistClub.BO
     public class BaseModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public int id;
-        public int Id
+        public string id;
+        public string Id
         {
             get => id;
             set

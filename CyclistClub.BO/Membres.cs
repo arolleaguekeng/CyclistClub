@@ -32,8 +32,8 @@ namespace CyclistClub.BO
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FullName)));
             }
         }
-        public int phoneNumber;
-        public int PhoneNumber
+        public long phoneNumber;
+        public long PhoneNumber
         {
             get => phoneNumber;
             set
@@ -65,7 +65,7 @@ namespace CyclistClub.BO
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Picture)));
             }
         }
-        public Membres(int id,  string fullName, int phoneNumber,string email, string password,string picture)
+        public Membres(string id,  string fullName, long phoneNumber, string password,string picture)
         {
             Email = email;
             FullName = fullName;

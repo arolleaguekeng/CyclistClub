@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace CyclistClub.BO
 {
-    public class Reservation : BaseModel
+    public class Recapitulatif : BaseModel
     {
-        public int Id_membre { get; set; }
-        public string TypeReservation { get; set; }
-
     }
 }

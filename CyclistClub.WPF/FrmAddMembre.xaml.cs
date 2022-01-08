@@ -1,9 +1,11 @@
 ﻿using CyclistClub.BLL;
 using CyclistClub.BO;
+using CyclistClub.DAL;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -29,6 +31,7 @@ namespace CyclistClub.WPF
         OpenFileDialog op;
         public FrmAddMembre()
         {
+            membres = new Membres();
             op = new OpenFileDialog();
             InitializeComponent();
             manager = new MemberManager();
@@ -41,10 +44,15 @@ namespace CyclistClub.WPF
         {
             try
             {
+
                 MD5 mD5 = MD5.Create();
-                membres = new Membres(0,txtFullname.Text, int.Parse(txtPhoneNumber.Text.ToString()),
-                    txtEmail.Text.ToString(), manager.Md5Hash(mD5,txtPassword.Password),op.FileName);
+                membres = new Membres("",txtFullname.Text, int.Parse(txtPhoneNumber.Text.ToString()),
+                    manager.Md5Hash(mD5,txtPassword.Password),op.FileName);
                 manager.AddUser(membres);
+                MessageBox.Show(membres.FullName);
+                //membres.Email = "";
+                //membres.FullName = "";
+
             }
             catch(Exception ex)
             {
@@ -55,18 +63,24 @@ namespace CyclistClub.WPF
 
         private void btnAddPicture_Click(object sender, RoutedEventArgs e)
         {
-            
-            op.Title = "Select a picture";
-            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-              "Portable Network Graphic (*.png)|*.png";
-            if (op.ShowDialog() == true)
+            try
             {
-                membres.Email = "";
-                membres.FullName = "";
-                membres.Picture = op.FileName;
-                imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
+                op.Title = "Select a picture";
+                op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+                  "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                  "Portable Network Graphic (*.png)|*.png";
+                if (op.ShowDialog() == true)
+                {
+                    membres.Picture = op.FileName;
+                    imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
 
         }
     }

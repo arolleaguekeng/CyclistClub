@@ -52,6 +52,7 @@
     <Compile Include="Membres.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Randoneur.cs" />
+    <Compile Include="Recapitulatif.cs" />
     <Compile Include="Reservation.cs" />
     <Compile Include="Trialistes.cs" />
     <Compile Include="Vit.cs" />

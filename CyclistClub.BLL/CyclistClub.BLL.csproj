@@ -45,6 +45,7 @@
     <Compile Include="CotisationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MemberManager.cs" />
+    <Compile Include="RecapitulatifManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CyclistClub.BO\CyclistClub.BO.csproj">

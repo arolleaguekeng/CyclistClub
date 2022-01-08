@@ -26,22 +26,18 @@ namespace CyclistClub.BLL
         }
         public void EditUser()
         {
-            //repository.Set(membres);
+            repository.Set
         }
 
-        public bool EditUser(string Table, string login, string password)
+
+        public bool LoginUser(string email, string password)
         {
-            return repository.Login(Table,login,password);
+            return repository.Login("membres", email, password);
         }
 
-        //public Membres LoginUser(string email , string password)
-        //{
-        //    return repository.Login(email,password);
-        //}
-
-        public void DeleteUser()
+        public void DeleteUser(string id, string newId)
         {
-            
+            repository.Delete("membres", id, newId);
         }
 
         //public List<T> GetAllUsers()

@@ -7,25 +7,22 @@ using System.Threading.Tasks;
 
 namespace CyclistClub.DAL
 {
-    public  class DbConnector
+    public static class DbConnector
     {
-        public SqlConnection connection { get; set; }
-        public void  Connexion()
+        public static SqlConnection connection { get; set; }
+
+        public static void Open()
         {
+            connection = new SqlConnection();
             const string host = @"localhost\SQLEXPRESS";
             const string port = "3306";
             const string db = "bicycle";
             const string user = "root";
             const string pwd = "";
             string connectString = $"Server={host};uid={user};pwd={pwd};database={db}";
-            
-        }
-
-        public void Open()
-        {
             try
             {
-                this.connection.Open();
+                connection.Open();
             }
             catch (SqlException ex)
             {
