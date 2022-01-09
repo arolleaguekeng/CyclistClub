@@ -1,0 +1,45 @@
+﻿<Window x:Class="CyclistClub.WPF.FrmShowMembre"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CyclistClub.WPF"
+        mc:Ignorable="d"
+        Title="FrmShowMembre" Height="450" Width="800">
+    <StackPanel>
+        <Label Content="Liste des Membres"
+               HorizontalAlignment="Center"
+               FontSize="40"/>
+        <ListView ItemsSource="{Binding membres}"
+                 Width="380" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Ellipse Grid.Column="0"
+                                 Width="60" 
+                                 Height="60">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding Picture}"
+                               Stretch="UniformToFill"/>
+                            </Ellipse.Fill>
+
+                        </Ellipse>
+
+                        <StackPanel Grid.Column="1">
+                            <Label Content="{Binding FullName}"
+                               FontWeight="Bold"/>
+                            <Label Content="{Binding Email}"
+                               FontSize="10"/>
+                        </StackPanel>
+                    </Grid>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackPanel>
+</Window>

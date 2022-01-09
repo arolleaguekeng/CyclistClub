@@ -16,14 +16,14 @@ namespace CyclistClub.BLL
             repository = new CotisationRepository();
         }
         
-        public void AddCotisation(Membres membres)
+        public void AddCotisation(Cotisation cotisation)
         {
 
-            repository.Add(membres);
+            repository.Add(cotisation);
         }
-        public void AfficherCotisations()
-        {
-            repository.GetAll("cotisations");
-        }
+        //public void AfficherCotisations()
+        //{
+        //    repository.GetAll("cotisations");
+        //}
     }
 }

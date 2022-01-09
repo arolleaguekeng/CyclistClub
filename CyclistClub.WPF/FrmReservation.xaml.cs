@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CyclistClub.BLL;
+using CyclistClub.BO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,18 @@ namespace CyclistClub.WPF
     /// </summary>
     public partial class FrmReservation : Window
     {
+        ReservationManager manager;
         public FrmReservation()
         {
             InitializeComponent();
+            manager = new ReservationManager();
+        }
+
+        private void bntSave_Click(object sender, RoutedEventArgs e)
+        {
+            Reservation reservation = new Reservation("",1,int.Parse(tbNbreplaceVelo.Text),int.Parse(tbNbrePlaceMembre.Text ));
+            Application.Current.Properties.Add("reservation", reservation);
+
         }
     }
 }

@@ -56,11 +56,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="FrmAddMembre.xaml">
+    <Page Include="FrmAddBalade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmInscription.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FrmReservation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmshowBalade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmShowMembre.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -72,11 +84,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FrmAddMembre.xaml.cs">
-      <DependentUpon>FrmAddMembre.xaml</DependentUpon>
+    <Compile Include="FrmAddBalade.xaml.cs">
+      <DependentUpon>FrmAddBalade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInscription.xaml.cs">
+      <DependentUpon>FrmInscription.xaml</DependentUpon>
     </Compile>
     <Compile Include="FrmReservation.xaml.cs">
       <DependentUpon>FrmReservation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmshowBalade.xaml.cs">
+      <DependentUpon>FrmshowBalade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmShowMembre.xaml.cs">
+      <DependentUpon>FrmShowMembre.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

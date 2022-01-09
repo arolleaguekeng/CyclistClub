@@ -10,20 +10,19 @@ namespace CyclistClub.DAL
 {
     public class ReservationRepository : BaseRepository<Reservation>
     {
-        public void Add(Membres membres)
+        public void Add(Reservation reservation)
         {
 
-            string query = "INSERT INTO reservation(name, id_client, type_reservation)  VALUES(@name, @client, @type)";
+            string query = "INSERT INTO reservation(id_membre, velo,membre)  VALUES(@client, @velo,@membre)";
             using (SqlCommand command = new SqlCommand(query))
             {
-                DbConnector.Open();
-                command.Parameters.AddWithValue("@name", membres.FullName);
-                command.Parameters.AddWithValue("@client", membres.PhoneNumber);
-                command.Parameters.AddWithValue("@type", membres.Password);
+                DbConnector.Connection().Open();
+                command.Parameters.AddWithValue("@client", reservation.Id_membre);
+                command.Parameters.AddWithValue("@velo", reservation.TypeReservation);
+                command.Parameters.AddWithValue("@membre", reservation.TypeReservation);
                 command.ExecuteNonQuery();
                 Console.WriteLine("save done!");
             }
-
         }
     }
 }

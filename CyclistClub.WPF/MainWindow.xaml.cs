@@ -27,7 +27,7 @@ namespace CyclistClub.WPF
 
         private void BtnConnect_Click(object sender, RoutedEventArgs e)
         {
-            FrmAddMembre frmAdd = new FrmAddMembre();
+            FrmInscription frmAdd = new FrmInscription();
             frmAdd.Show();
         }
     }

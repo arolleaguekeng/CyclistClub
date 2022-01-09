@@ -15,9 +15,9 @@ namespace CyclistClub.BLL
         {
             repository = new RecapitulatifRepository();
         }
-        public List<Recapitulatif> AfficherRecapitulatif()
-        {
-            return repository.GetAll();
-        }
+        //public List<Recapitulatif> AfficherRecapitulatif()
+        //{
+        //    return repository.GetAll();
+        //}
     }
 }

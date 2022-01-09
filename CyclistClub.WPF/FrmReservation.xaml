@@ -7,13 +7,35 @@
         mc:Ignorable="d"
         Title="FrmReservation" Height="450" Width="800">
     <StackPanel>
-        <Label Content="Reservation"
-               FontSize="40"
-               HorizontalAlignment="Center"
-               FontWeight="Bold"
-               />
-        <Label Content="que voulez vous réserver ?"
+        <StackPanel  
+                    HorizontalAlignment="Center"
+                    Width="600">
+            <Label Content="Reservation"
+            FontSize="40"
+            HorizontalAlignment="Center"
+            FontWeight="Bold"
+            />
+            <Label Content="quel type de place voulez vous réserver ?"
                FontSize="15"
                HorizontalAlignment="Center"/>
+            <Label Content="Membre"
+               FontSize="20"/>
+            <TextBox Height="40"
+                 x:Name="tbNbrePlaceMembre"
+                 />
+            <Label Content="Vélo"
+               FontSize="20"/>
+            <TextBox Height="40" 
+                     x:Name ="tbNbreplaceVelo" 
+                 />
+            <Button x:Name="bntSave"
+                    Height="40"
+                    Content="Réserver"
+                    HorizontalAlignment="Right"
+                    Width="100"
+
+                    Click="bntSave_Click"/>
+        </StackPanel>
+
     </StackPanel>
 </Window>

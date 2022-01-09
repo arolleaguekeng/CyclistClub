@@ -8,20 +8,22 @@ namespace CyclistClub.BO
 {
     public class Balade :BaseModel
     {
+        public string LieuDepart { get; set; }
+        public string LieuArrive { get; set; }
         public DateTime Date { get; set; }
         public double Tarrif { get; set; }
-        public string Name { get; set; }
         public Balade()
         {
 
         }
 
-        public Balade(string id,string name , DateTime date, double tarrif)
+        public Balade(string id,string lieuDepart, string lieuArrive, DateTime date, double tarrif)
         {
             Id = id;
+            LieuDepart = lieuDepart;
+            LieuArrive = lieuArrive;
             Date = date;
             Tarrif = tarrif;
-            Name = name;
         }
     }
 }

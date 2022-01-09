@@ -3,6 +3,7 @@ using CyclistClub.BO;
 using CyclistClub.DAL;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -26,7 +27,7 @@ namespace CyclistClub.BLL
         }
         public void EditUser()
         {
-            repository.Set
+            //repository.Set()
         }
 
 
@@ -40,10 +41,11 @@ namespace CyclistClub.BLL
             repository.Delete("membres", id, newId);
         }
 
-        //public List<T> GetAllUsers()
-        //{
-        //    return repository.GetAll();
-        //}
+
+        public ObservableCollection<Membres> GetAllUsers()
+        {
+            return repository.GetAll("membres");
+        }
         public  string Md5Hash(MD5 md5Hash, string input)
         {
             byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));

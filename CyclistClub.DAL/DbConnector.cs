@@ -11,25 +11,17 @@ namespace CyclistClub.DAL
     {
         public static SqlConnection connection { get; set; }
 
-        public static void Open()
+        public static SqlConnection Connection()
         {
-            connection = new SqlConnection();
-            const string host = @"localhost\SQLEXPRESS";
+
+            const string host = @"DESKTOP-ISA9BMQ";
             const string port = "3306";
             const string db = "bicycle";
-            const string user = "root";
-            const string pwd = "";
+            const string user = "sa";
+            const string pwd = "root";
             string connectString = $"Server={host};uid={user};pwd={pwd};database={db}";
-            try
-            {
-                connection.Open();
-            }
-            catch (SqlException ex)
-            {
-                string ErrorString = ex.Number.ToString();
-                Console.WriteLine("[DB] Error Open Connection: " + ex.Message + "[" + ErrorString + "]");
-            }
-
+            connection = new SqlConnection(connectString);
+            return connection;
         }
 
     }

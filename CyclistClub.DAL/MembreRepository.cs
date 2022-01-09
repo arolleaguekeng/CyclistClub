@@ -1,6 +1,7 @@
 ﻿using CyclistClub.BO;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
@@ -19,11 +20,11 @@ namespace CyclistClub.DAL
 
         public void Add(Membres membres)
         {
- 
-                string query = "INSERT INTO membres(name, phone, password,picture)  VALUES(@name, @phone, @password,@picture)";
-                using (SqlCommand command = new SqlCommand(query))
+
+            string query = "INSERT INTO membres(nom, telephone, password,picture)  VALUES(@name, @phone, @password,@picture)";
+            using (SqlCommand command = new SqlCommand(query, DbConnector.Connection()))
                 {
-                    DbConnector.Open();
+                DbConnector.Connection().Open();
                     command.Parameters.AddWithValue("@id", membres.Id);
                     command.Parameters.AddWithValue("@name", membres.FullName);
                     command.Parameters.AddWithValue("@phone", membres.PhoneNumber);
@@ -39,7 +40,7 @@ namespace CyclistClub.DAL
         {
             try
             {
-                DbConnector.Open();
+                DbConnector.Connection().Open();
                 string queryString = "SELECT * FROM  " + Table + " WHERE login=" + "'" + login + "'" + " AND passwd=" + "'" + password + "';";
                 Console.WriteLine("=== QueryString === " + queryString);
                 SqlCommand cmd = new SqlCommand(queryString);
@@ -54,11 +55,12 @@ namespace CyclistClub.DAL
             }
 
         }
+
         public bool Login(string Table,string login, string password)
         {
             try
             {
-                DbConnector.Open();
+                DbConnector.Connection().Open();
                 var Cmd = Selection(Table, login, password);
                 return Cmd;
             }
@@ -69,6 +71,38 @@ namespace CyclistClub.DAL
                 return false;
             }
         }
+
+        public ObservableCollection<Membres> GetAll(string table)
+        {
+
+            try
+            {
+                using (SqlCommand command = new SqlCommand(querry))
+                {
+                    querry = $"SELECT * FROM {table}";
+                    command.CommandText = querry;
+                    command.Parameters.Clear();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            long phone;
+                            long.TryParse(reader["phone"].ToString(), out phone);
+                            datas.Add(new Membres(reader["id_membre"].ToString(), reader["name"].ToString(), phone, reader["password"].ToString(), reader["picture"].ToString()));
+                        }
+                        return datas;
+                    }
+                }
+
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+
 
     }
 }

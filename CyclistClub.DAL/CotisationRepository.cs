@@ -10,15 +10,16 @@ namespace CyclistClub.DAL
 {
     public class CotisationRepository : BaseRepository<Cotisation>
     {
-        public void Add(Membres membres)
+        public void Add(Cotisation cotisation)
         {
 
-            string query = "INSERT INTO cotisation(date, montent)  VALUES(@date, @montent)";
+            string query = "INSERT INTO cotisations(montent,date_cotisation,id_membre)  VALUES(@date, @montent,@id_utilisateur)";
             using (SqlCommand command = new SqlCommand(query))
             {
-                DbConnector.Open();
-                command.Parameters.AddWithValue("@date", membres.FullName);
-                command.Parameters.AddWithValue("@montent", membres.PhoneNumber);
+                DbConnector.Connection().Open();
+                command.Parameters.AddWithValue("@date", cotisation.Id);
+                command.Parameters.AddWithValue("@montent", cotisation.Montent);
+                command.Parameters.AddWithValue("@id_utilisateur", cotisation.IdUtilisateur);
                 command.ExecuteNonQuery();
                 Console.WriteLine("save done!");
             }
