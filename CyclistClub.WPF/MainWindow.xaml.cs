@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CyclistClub.BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,15 +21,33 @@ namespace CyclistClub.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        MemberManager manager;
         public MainWindow()
         {
+            manager = new MemberManager();
             InitializeComponent();
         }
 
         private void BtnConnect_Click(object sender, RoutedEventArgs e)
         {
-            FrmInscription frmAdd = new FrmInscription();
-            frmAdd.Show();
+            try
+            {
+                if (manager.LoginUser(tbEmail.Text, tbPassword.Password.ToString()) == true)
+                {
+                    FrmInscription frmAdd = new FrmInscription();
+                    frmAdd.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Nom d'utilisateur ou mot de passe incorect")
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
         }
     }
 }

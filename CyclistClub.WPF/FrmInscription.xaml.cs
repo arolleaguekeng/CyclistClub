@@ -43,8 +43,8 @@ namespace CyclistClub.WPF
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-           // try
-           // {
+            try
+            {
 
                 MD5 mD5 = MD5.Create();
                 membres = new Membres("", txtFullname.Text, int.Parse(txtPhoneNumber.Text.ToString()),
@@ -52,15 +52,15 @@ namespace CyclistClub.WPF
                 manager.AddUser(membres);
                 c_manager.AddCotisation(new Cotisation("", double.Parse(tbMontentCotisation.Text), DateTime.Now, membres.Id));
                 MessageBox.Show(membres.FullName);
-                //membres.Email = "";
-                //membres.FullName = "";
+            //membres.Email = "";
+            //membres.FullName = "";
 
-           // }
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
         }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+}
 
 
         private void btnAddPicture_Click(object sender, RoutedEventArgs e)

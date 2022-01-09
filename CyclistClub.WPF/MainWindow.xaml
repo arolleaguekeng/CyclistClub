@@ -22,14 +22,13 @@
             x:Name="tbEmail"
             Text="{Binding Email}"/>
             <Label 
-                Content="Fullname"
+                Content="Password"
                 Margin="10,0,10,0"
               />
-            <TextBox 
+            <PasswordBox 
             FontSize="20" 
             Margin="10"
-            x:Name="txtFullname"
-            Text ="{Binding FullName}"
+            x:Name="tbPassword"
             />
             <Button Content="Connect"
                 x:Name="BtnConnect"
